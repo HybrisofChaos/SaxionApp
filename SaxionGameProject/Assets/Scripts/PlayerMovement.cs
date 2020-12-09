@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [@RequireComponent (typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
@@ -30,18 +31,22 @@ public class PlayerMovement : MonoBehaviour
     {
         this.grounded = isGrounded();
 
-        horizontalSpeed = Input.GetAxis("Horizontal") * speed;
-
-        if(Input.GetButtonDown("Jump") && coyoteTime > 0 && canJump){
-            rb2d.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
-
-            StartCoroutine(timeJump(maxCoyoteTime));
-        }
-
         if(grounded){
             coyoteTime = maxCoyoteTime;
         }else{
             coyoteTime -= Time.deltaTime;
+        }
+    }
+
+    public void OnMove(InputValue inputValue){
+        horizontalSpeed = inputValue.Get<Vector2>().x *  speed;
+    }
+
+    public void OnJump(){
+        if (coyoteTime > 0 && canJump){
+            rb2d.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
+
+            StartCoroutine(timeJump(maxCoyoteTime));
         }
     }
 
@@ -51,8 +56,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     bool isGrounded(){
-        Vector2 topLeft = new Vector2(transform.position.x - transform.localScale.x / 2, transform.position.y + transform.localScale.y / 2);
-        Vector2 bottomRight = new Vector2(transform.position.x + transform.localScale.x / 2, transform.position.y - transform.localScale.y / 2 - 0.05f);
+        Vector2 topLeft = new Vector2(transform.position.x - transform.localScale.x / 4, transform.position.y + transform.localScale.y / 2);
+        Vector2 bottomRight = new Vector2(transform.position.x + transform.localScale.x / 4, transform.position.y - transform.localScale.y / 2 - 0.05f);
         
         return Physics2D.OverlapArea(topLeft, bottomRight, groundMask);
     }
