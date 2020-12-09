@@ -16,7 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalSpeed;
 
     private float coyoteTime = 0;
-    private float maxCoyoteTime = 0.3f;
+
+    private float maxCoyoteTime = 0.1f;
 
     private bool grounded = false;
     private bool canJump = true;
