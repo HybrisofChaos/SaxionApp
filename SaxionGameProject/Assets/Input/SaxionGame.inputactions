@@ -30,6 +30,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "FireSpecial",
+                    "type": "Button",
+                    "id": "3e47ab47-eb22-4f01-a8a4-07e4051dbab1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "938a0337-6fa3-40db-80bc-268b97b046d6",
@@ -261,6 +269,17 @@
                 },
                 {
                     "name": "",
+                    "id": "ed20398a-6e96-4c44-9208-f3f39024e3ef",
+                    "path": "<Keyboard>/#(G)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "0aa30c8e-f864-42dd-ac98-ede8563467af",
                     "path": "<Keyboard>/w",
                     "interactions": "",
@@ -278,6 +297,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "03bebff6-dc1f-4020-b1b1-67c90ea3be9a",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FireSpecial",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
