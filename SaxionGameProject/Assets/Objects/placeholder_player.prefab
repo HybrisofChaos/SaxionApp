@@ -227,5 +227,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f585154fb79ef804d8ce75a109997902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ProjectileTypes:
+  - {fileID: 6275787896171043750, guid: 988f870cb956d194c87cbf1dec973097, type: 3}
+  - {fileID: 4134468376174150584, guid: 14bbc6196c279fa4da6864f1431eba3e, type: 3}
+  - {fileID: 5157159160142520509, guid: d4fa46eaabdc90143bfe021cf41f2a3c, type: 3}
+  - {fileID: 6398864232920923308, guid: 3ea0f78e6754c5e40b545b9587fdb5ee, type: 3}
   playerClass: 0
   itemType: 0
