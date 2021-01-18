@@ -74,4 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a5a2fb4777d3541b66fe11399f6c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerClassPrefab: {fileID: 6981285452839290860, guid: 739a04c5288a2934a8a31eb19e524456, type: 3}
+  knightPrefab: {fileID: 6981285452839290860, guid: 739a04c5288a2934a8a31eb19e524456, type: 3}
+  rangerPrefab: {fileID: 3944953802326132716, guid: fbc2ac5152193894697da5e6f07650f0, type: 3}
+  color: {r: 0, g: 0, b: 0, a: 0}
+  playerClass: 0

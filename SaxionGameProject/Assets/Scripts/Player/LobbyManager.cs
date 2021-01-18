@@ -30,7 +30,7 @@ public class LobbyManager : MonoBehaviour
             countdownObject.GetComponent<Text>().text = "Game Starts in " + (int)countdown + " seconds";
             countdown -= Time.deltaTime;
 		}
-		else
+		else if(countdownObject)
 		{
             countdownObject.GetComponent<Text>().text = "";
 		}
@@ -44,8 +44,9 @@ public class LobbyManager : MonoBehaviour
     public void AddPlayer(Player player)
 	{
         lobbyPlayerObject.GetChild(players.Count).gameObject.SetActive(true);
-
         this.players.Add(player);
+        GetPlayerUIObject(player).GetChild(1 + (int)player.playerClass).GetComponent<Image>().color = player.color;
+
 	}
 
     //TODO: Move to GameManager
@@ -54,6 +55,7 @@ public class LobbyManager : MonoBehaviour
         int playerIndex = players.IndexOf(player);
         string formattedClassName = className.Substring(0, 1) + className.Substring(1).ToLower();
         Transform uiObject = this.GetPlayerUIObject(player);
+        if (!uiObject) return;
 
         uiObject.GetChild(0).GetComponent<Text>().text = "< " + formattedClassName + " >";
 
@@ -62,6 +64,7 @@ public class LobbyManager : MonoBehaviour
             uiObject.GetChild(i).gameObject.SetActive(false);
 		}
         uiObject.GetChild(1 + (int)player.playerClass).gameObject.SetActive(true);
+        uiObject.GetChild(1 + (int)player.playerClass).GetComponent<Image>().color = player.color;
 
     }
 
@@ -84,6 +87,6 @@ public class LobbyManager : MonoBehaviour
 
     public Transform GetPlayerUIObject(Player player)
 	{
-        return this.lobbyPlayerObject.GetChild(this.players.IndexOf(player));
+        return lobbyPlayerObject ? this.lobbyPlayerObject.GetChild(this.players.IndexOf(player)) : null;
 	}
 }

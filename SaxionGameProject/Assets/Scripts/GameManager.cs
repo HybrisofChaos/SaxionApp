@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
+    public string levelName;
     public static int GAME_START_READY_TIME = 5;
 
     private List<Player> players = new List<Player>();
@@ -12,8 +14,11 @@ public class GameManager : MonoBehaviour
 
     private LobbyManager lobbyManager;
 
+    private bool gameStarted;
+
     void Awake()
 	{
+        Object.DontDestroyOnLoad(this.gameObject);
         lobbyManager = GameObject.FindObjectOfType<LobbyManager>();
 	}
 
@@ -64,6 +69,29 @@ public class GameManager : MonoBehaviour
 	{
         lobbyManager.StartGameCountdown();
         yield return new WaitForSeconds(GAME_START_READY_TIME);
-        // Go to level
+        SceneManager.LoadScene(this.levelName);
+        gameStarted = true;
+        StartCoroutine("SpawnPlayers");
+	}
+
+    private IEnumerator SpawnPlayers()
+	{
+        yield return new WaitForSeconds(0.5f); //Wait until the scene is loaded
+        GameObject spawnPointHolder = GameObject.Find("SpawnPoints");
+        int childrenCount = spawnPointHolder.transform.childCount;
+        List<int> skipChildren = new List<int>();
+
+        foreach(Player p in players)
+		{
+            int spawnIndex;
+
+            do {
+                spawnIndex = Random.Range(0, childrenCount - 1);
+            } while (skipChildren.Contains(spawnIndex));
+
+            skipChildren.Add(spawnIndex);
+            p.transform.position = spawnPointHolder.transform.GetChild(spawnIndex).position;
+            p.LoadBody();
+        }
 	}
 }
