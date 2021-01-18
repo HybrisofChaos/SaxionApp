@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -72,6 +73,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(this.levelName);
         gameStarted = true;
         StartCoroutine("SpawnPlayers");
+        this.GetComponent<PlayerInputManager>().DisableJoining();
 	}
 
     private IEnumerator SpawnPlayers()

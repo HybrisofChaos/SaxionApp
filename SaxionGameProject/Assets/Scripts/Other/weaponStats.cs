@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class weaponStats : MonoBehaviour
 {
-
     public enum Modes
     { melee, Straight, Follow, Throw }
 
@@ -13,11 +12,6 @@ public class weaponStats : MonoBehaviour
     public bool pierce;
 
     public Modes projectileMode;
-
-    void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log(collision.gameObject.name);
-    }
 
     void OnTriggerEnter(Collider collider)
     {

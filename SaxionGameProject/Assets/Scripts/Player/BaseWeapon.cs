@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class BaseWeapon : MonoBehaviour
 {
-    private enum Class: int
-    {
-        Warrior = 0,
-        Mage = 1,
-        Ranger = 2
-    }
-
-    private enum itemTypes: int
+    public enum itemTypes: int
     {
         Neutral = 0,
         Fire = 1,
@@ -22,8 +15,7 @@ public class BaseWeapon : MonoBehaviour
     public GameObject[] ProjectileTypes = new GameObject[4];
     
     
-    public int playerClass;
-    public int itemType;
+    public itemTypes itemType;
 
     private bool canShoot = true;
     private IEnumerator coolDown;
@@ -42,7 +34,7 @@ public class BaseWeapon : MonoBehaviour
 
 
             Vector3 rotation = transform.localScale.x == 1 ? Vector3.zero : Vector3.forward * 180;
-            GameObject projectile = (GameObject)Instantiate(ProjectileTypes[itemType], transform.position * transform.localScale.x, Quaternion.Euler(rotation));
+            GameObject projectile = (GameObject)Instantiate(ProjectileTypes[(int)itemType], transform.position * transform.localScale.x, Quaternion.Euler(rotation));
             weaponStats stats = projectile.GetComponent<weaponStats>();
             projectile.GetComponent<Rigidbody2D>().velocity = transform.localScale.x * Vector2.right * stats.projectileSpeed;
 

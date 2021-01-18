@@ -43,7 +43,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void OnJump(){
-            Debug.Log(coyoteTime);
         if (coyoteTime > 0 && canJump){
             rb2d.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
             StartCoroutine(timeJump(maxCoyoteTime));
