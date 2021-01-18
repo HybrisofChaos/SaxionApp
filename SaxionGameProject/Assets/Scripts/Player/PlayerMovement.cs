@@ -45,7 +45,6 @@ public class PlayerMovement : MonoBehaviour
     public void OnJump(){
         if (coyoteTime > 0 && canJump){
             rb2d.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
-
             StartCoroutine(timeJump(maxCoyoteTime));
         }
     }
@@ -57,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool isGrounded(){
         Vector2 topLeft = new Vector2(transform.position.x - transform.localScale.x / 4, transform.position.y + transform.localScale.y / 2);
-        Vector2 bottomRight = new Vector2(transform.position.x + transform.localScale.x / 4, transform.position.y - transform.localScale.y / 2 - 0.05f);
+        Vector2 bottomRight = new Vector2(transform.position.x + transform.localScale.x / 4, transform.position.y - transform.localScale.y / 2 - 0.06f);
         
         return Physics2D.OverlapArea(topLeft, bottomRight, groundMask);
     }

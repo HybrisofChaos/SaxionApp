@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2134485198990211111}
   - component: {fileID: 2134485198990211108}
-  - component: {fileID: 2134485198990211109}
+  - component: {fileID: 391551495652505759}
+  - component: {fileID: 7123789999117726711}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -47,7 +48,7 @@ MonoBehaviour:
   m_NotificationBehavior: 0
   m_MaxPlayerCount: -1
   m_AllowJoining: 1
-  m_JoinBehavior: 0
+  m_JoinBehavior: 2
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -55,7 +56,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_JoinAction:
-    m_UseReference: 0
+    m_UseReference: 1
     m_Action:
       m_Name: Join
       m_Type: 0
@@ -64,7 +65,7 @@ MonoBehaviour:
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
-    m_Reference: {fileID: 0}
+    m_Reference: {fileID: -7811096761179935297, guid: cb405e31b8d18964db625c11084d5501, type: 3}
   m_PlayerPrefab: {fileID: 6981285452839290860, guid: 739a04c5288a2934a8a31eb19e524456, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
@@ -75,7 +76,7 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &2134485198990211109
+--- !u!114 &391551495652505759
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,3 +88,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 401fcdc86ea15854db15123114d681ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knightPrefab: {fileID: 6981285452839290860, guid: 739a04c5288a2934a8a31eb19e524456, type: 3}
+  rangerPrefab: {fileID: 3944953802326132716, guid: fbc2ac5152193894697da5e6f07650f0, type: 3}
+--- !u!114 &7123789999117726711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134485198990211106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: cb405e31b8d18964db625c11084d5501, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: c255b899-e108-4edb-8108-999070ea1673
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}

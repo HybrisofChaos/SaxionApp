@@ -30,9 +30,25 @@
                     "interactions": ""
                 },
                 {
+                    "name": "FireSpecial",
+                    "type": "Button",
+                    "id": "3e47ab47-eb22-4f01-a8a4-07e4051dbab1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "938a0337-6fa3-40db-80bc-268b97b046d6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Ready",
+                    "type": "Button",
+                    "id": "cb254624-49d6-4a7a-bc26-7d26ae22f229",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -261,6 +277,17 @@
                 },
                 {
                     "name": "",
+                    "id": "ed20398a-6e96-4c44-9208-f3f39024e3ef",
+                    "path": "<Keyboard>/#(G)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "0aa30c8e-f864-42dd-ac98-ede8563467af",
                     "path": "<Keyboard>/w",
                     "interactions": "",
@@ -278,6 +305,39 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "03bebff6-dc1f-4020-b1b1-67c90ea3be9a",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FireSpecial",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cf8158c8-687e-4921-8cfb-d8d9955f326d",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Ready",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3a6b8a32-447a-444d-a18b-77ca1687f04b",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Ready",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -784,6 +844,74 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Join",
+            "id": "c255b899-e108-4edb-8108-999070ea1673",
+            "actions": [
+                {
+                    "name": "JoinKnight",
+                    "type": "Button",
+                    "id": "b27232c4-921d-4018-94a3-045ac37ae050",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "JoinRanger",
+                    "type": "Button",
+                    "id": "d38cfae2-3ea0-4dac-a538-4d81afa57116",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "08b6fa95-49bd-471b-b4a5-b913ceadee7b",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JoinKnight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "05b1fceb-2b58-4ea0-8377-0414761cc3e9",
+                    "path": "<Keyboard>/#(X)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JoinKnight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "03ec6ec2-2609-4610-994d-f328c2e90ab4",
+                    "path": "<Keyboard>/#(C)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JoinRanger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bfe5add1-a930-4eb4-b341-a84668a6fbb7",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JoinRanger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
