@@ -42,21 +42,25 @@ public class Player : MonoBehaviour
 
 	void Start()
 	{
-		print("staret");
+		print("starting player");
 	}
 
 	public void OnReady()
 	{
-		this.ready = this.ready ? false : true;
-		print(ready ? "ready" : "not ready");
-		if (this.ready)
-		{
-			this.gameManager.AddReadyPlayer(this);
-		}
-		else
-		{
-			this.gameManager.RemoveReadyPlayer(this);
-		}
+        if (!gameManager.gameStarted)
+        {
+			print("yeet");
+			this.ready = this.ready ? false : true;
+			print(ready ? "ready" : "not ready");
+			if (this.ready)
+			{
+				this.gameManager.AddReadyPlayer(this);
+			}
+			else
+			{
+				this.gameManager.RemoveReadyPlayer(this);
+			}
+        }
 	}
 
 	public void OnMove(InputValue value)

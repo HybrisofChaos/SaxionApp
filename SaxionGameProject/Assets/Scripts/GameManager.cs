@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
 
     private LobbyManager lobbyManager;
 
-    private bool gameStarted;
+    public static bool gameStarted;
+    private bool playersSpawned;
 
     void Awake()
 	{
@@ -72,28 +73,36 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(GAME_START_READY_TIME);
         SceneManager.LoadScene(this.levelName);
         gameStarted = true;
+        playersSpawned = false;
         StartCoroutine("SpawnPlayers");
         this.GetComponent<PlayerInputManager>().DisableJoining();
 	}
 
     private IEnumerator SpawnPlayers()
 	{
-        yield return new WaitForSeconds(0.5f); //Wait until the scene is loaded
-        GameObject spawnPointHolder = GameObject.Find("SpawnPoints");
-        int childrenCount = spawnPointHolder.transform.childCount;
-        List<int> skipChildren = new List<int>();
+        if (!playersSpawned){
+            Debug.Log("Spawning Players");
+            yield return new WaitForSeconds(0.5f); //Wait until the scene is loaded
+            GameObject spawnPointHolder = GameObject.Find("SpawnPoints");
+            int childrenCount = spawnPointHolder.transform.childCount;
+            List<int> skipChildren = new List<int>();
 
-        foreach(Player p in players)
-		{
-            int spawnIndex;
+            foreach(Player p in players)
+		    {
+                int spawnIndex;
 
-            do {
-                spawnIndex = Random.Range(0, childrenCount - 1);
-            } while (skipChildren.Contains(spawnIndex));
+                do {
+                    spawnIndex = Random.Range(0, childrenCount - 1);
+                } while (skipChildren.Contains(spawnIndex));
 
-            skipChildren.Add(spawnIndex);
-            p.transform.position = spawnPointHolder.transform.GetChild(spawnIndex).position;
-            p.LoadBody();
+                skipChildren.Add(spawnIndex);
+                p.transform.position = spawnPointHolder.transform.GetChild(spawnIndex).position;
+                if (p.transform.childCount == 0)
+                {
+                  p.LoadBody();
+                }
+            }
+          playersSpawned = true;
         }
 	}
 }
