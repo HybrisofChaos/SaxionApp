@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     private LobbyManager lobbyManager;
 
-    public static bool gameStarted;
+    public bool gameStarted;
     private bool playersSpawned;
 
     void Awake()

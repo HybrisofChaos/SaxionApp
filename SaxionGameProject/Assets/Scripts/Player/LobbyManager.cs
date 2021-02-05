@@ -82,7 +82,10 @@ public class LobbyManager : MonoBehaviour
     public void ReadyChange(Player player, bool ready)
 	{
         int playerIndex = players.IndexOf(player);
-        lobbyPlayerObject.GetChild(playerIndex).GetComponent<Text>().color = ready ? Color.green : Color.white;
+        if (lobbyPlayerObject != null)
+        {
+            lobbyPlayerObject.GetChild(playerIndex).GetComponent<Text>().color = ready ? Color.green : Color.white;
+        }
 	}
 
     public Transform GetPlayerUIObject(Player player)
