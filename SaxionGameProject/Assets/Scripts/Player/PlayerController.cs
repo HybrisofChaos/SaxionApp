@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour, IKillable
 {
 	[SerializeField]
 	private int maxHealth = 1000;
+
+	[SerializeField]
+	private GameObject aimArrow;
+
 	private int health;
 
 	public delegate void DeathAction(GameObject deadPlayer, GameObject killer);
@@ -13,13 +18,27 @@ public class PlayerController : MonoBehaviour, IKillable
 
 	private List<GameObject> damageSources = new List<GameObject>();
 
+	private BaseWeapon weapon;
+	private PlayerAim playerAim;
+
+
 	void Start(){
 		this.health = this.maxHealth;
+
+		this.weapon = this.GetComponent<BaseWeapon>();
+		playerAim = this.GetComponent<PlayerAim>();
+	}
+
+	void Update()
+	{
+		//TODO: See if lerping this helps with mouse input
+		aimArrow.transform.rotation = playerAim.GetRotation();
 	}
 
 	public void ApplyDamage(int damage, GameObject source)
 	{
 		health -= damage;
+		damageSources.Add(source);
 
 		if(health <= 0){
 			Die();
@@ -34,9 +53,11 @@ public class PlayerController : MonoBehaviour, IKillable
 		//NOOP for now
 	}
 
-	protected void OnAttack(){
+	protected void OnFire(){
+		weapon.Fire(aimArrow.transform.rotation);
 	}
 
-	protected void OnSkill(){
+	protected void OnFireSpecial(){
+		weapon.SpecialFire();
 	}
 }

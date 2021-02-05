@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     {
         this.rb2d = this.GetComponent<Rigidbody2D>();
     }
+
     void Update()
     {
         this.grounded = isGrounded();

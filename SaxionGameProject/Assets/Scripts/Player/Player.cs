@@ -40,31 +40,26 @@ public class Player : MonoBehaviour
 
 	}
 
-	void Start()
-	{
-		print("starting player");
-	}
-
 	public void OnReady()
 	{
         if (!gameManager.gameStarted)
         {
-			print("yeet");
-			this.ready = this.ready ? false : true;
-			print(ready ? "ready" : "not ready");
-			if (this.ready)
+			if (!this.ready)
 			{
 				this.gameManager.AddReadyPlayer(this);
+				this.ready = true;
 			}
 			else
 			{
 				this.gameManager.RemoveReadyPlayer(this);
+				this.ready = false;
 			}
         }
 	}
 
+	//Select classes in this case
 	public void OnMove(InputValue value)
-	{
+	{ 
 		if (this.ready || this.inputLocked) return;
 
 		float xMov = value.Get<Vector2>().x;
@@ -102,5 +97,4 @@ public class Player : MonoBehaviour
 
 		go.GetComponent<SpriteRenderer>().color = this.color;
 	}
-
 }
