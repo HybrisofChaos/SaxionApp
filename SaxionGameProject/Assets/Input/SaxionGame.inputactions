@@ -60,6 +60,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "AimMouse",
+                    "type": "Value",
+                    "id": "57ec3bec-dea5-428b-bb32-067c2fe80f1f",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -351,23 +359,23 @@
                 },
                 {
                     "name": "",
-                    "id": "65c5693a-9329-4dae-ab30-39205febdef8",
-                    "path": "<Mouse>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "5bc33dd2-c650-476b-9dff-45316ee64be2",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "NormalizeVector2",
                     "groups": "Gamepad",
                     "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "842e8d5a-274f-4b4a-b915-b3fbeae08cc1",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "AimMouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

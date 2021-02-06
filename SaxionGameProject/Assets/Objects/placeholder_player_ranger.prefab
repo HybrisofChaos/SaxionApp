@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 5125644199889250863}
   - component: {fileID: 1139153064428860748}
   - component: {fileID: 8526497552968616109}
+  - component: {fileID: -5144495268247618166}
   m_Layer: 8
   m_Name: placeholder_player_ranger
   m_TagString: Untagged
@@ -349,6 +350,18 @@ MonoBehaviour:
   - {fileID: 4134468376174150584, guid: 14bbc6196c279fa4da6864f1431eba3e, type: 3}
   - {fileID: 5157159160142520509, guid: d4fa46eaabdc90143bfe021cf41f2a3c, type: 3}
   itemType: 0
+--- !u!114 &-5144495268247618166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3944953802326132716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d179dbf76f49a994e8fa9aeb689e1f35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5669658181707716039
 GameObject:
   m_ObjectHideFlags: 0
