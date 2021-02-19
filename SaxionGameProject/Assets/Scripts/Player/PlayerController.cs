@@ -32,7 +32,8 @@ public class PlayerController : MonoBehaviour, IKillable
 	void Update()
 	{
 		//TODO: See if lerping this helps with mouse input
-			aimArrow.transform.rotation = playerAim.GetRotation();		
+			aimArrow.transform.rotation = playerAim.GetRotation();
+		aimArrow.transform.localScale = transform.localScale;
 	}
 
 	public void ApplyDamage(int damage, GameObject source)
