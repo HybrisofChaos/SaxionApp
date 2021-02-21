@@ -952,7 +952,7 @@ MonoBehaviour:
   jumpSpeed: 25
   groundMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!114 &7057184665608049687
 MonoBehaviour:
   m_ObjectHideFlags: 0

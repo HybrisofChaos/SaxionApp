@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
 
 	void Awake()
 	{
-		this.color = new Color(UnityEngine.Random.Range(0, 1F), UnityEngine.Random.Range(0, 1f), UnityEngine.Random.Range(0, 1f));
+		this.color = new Color(UnityEngine.Random.Range(0.1F, 1F), UnityEngine.Random.Range(0.1F, 1f), UnityEngine.Random.Range(0.1F, 1f));
 		DontDestroyOnLoad(this.gameObject);
 		gameManager = GameObject.FindObjectOfType<GameManager>();
 		if (gameManager)
@@ -82,6 +82,21 @@ public class Player : MonoBehaviour
 		this.inputLocked = false;
 	}
 
+
+	public void IterateThroughChildren(Transform parent, Color chosenColor)
+	{
+		Debug.Log(parent.childCount);
+		for (int i = 0; i < parent.childCount; i++)
+		{
+			Transform child = parent.GetChild(i);
+			if (child.gameObject.GetComponent<SpriteRenderer>())
+			{
+				child.gameObject.GetComponent<SpriteRenderer>().color = chosenColor;
+			}
+			IterateThroughChildren(child, chosenColor);
+		}
+	}
+
 	public void LoadBody()
 	{
 		GameObject go = null;
@@ -95,6 +110,6 @@ public class Player : MonoBehaviour
 				break;
 		}
 
-		go.GetComponent<SpriteRenderer>().color = this.color;
+		IterateThroughChildren(go.transform, this.color);
 	}
 }

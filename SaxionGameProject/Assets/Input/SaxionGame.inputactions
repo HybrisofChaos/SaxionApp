@@ -327,10 +327,21 @@
                 {
                     "name": "",
                     "id": "03bebff6-dc1f-4020-b1b1-67c90ea3be9a",
-                    "path": "",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
+                    "action": "FireSpecial",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9326816c-3393-4031-a39a-14dbb879ea32",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "FireSpecial",
                     "isComposite": false,
                     "isPartOfComposite": false

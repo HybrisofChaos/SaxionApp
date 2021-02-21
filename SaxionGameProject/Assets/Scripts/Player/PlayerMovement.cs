@@ -44,8 +44,11 @@ public class PlayerMovement : MonoBehaviour
 
         if(grounded){
             coyoteTime = maxCoyoteTime;
-        }else{
+            this.anim.SetBool("isJumping", false);
+        }
+        else{
             coyoteTime -= Time.deltaTime;
+            this.anim.SetBool("isJumping", true);
         }
     }
 
@@ -75,8 +78,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     bool isGrounded(){
-               Vector2 topLeft = new Vector2(transform.position.x - transform.localScale.x / 4, transform.position.y + transform.localScale.y / 2);
-               Vector2 bottomRight = new Vector2(transform.position.x + transform.localScale.x / 4, transform.position.y - transform.localScale.y / 2 - 0.06f- 1.3f);
+               Vector2 topLeft = new Vector2(transform.position.x - transform.localScale.x / 4 - direction, transform.position.y);
+               Vector2 bottomRight = new Vector2(transform.position.x + transform.localScale.x / 4 - direction, transform.position.y - transform.localScale.y / 2 - 0.06f- 1.3f);
                Vector3 debugStart = topLeft;
                Vector3 debugEnd = bottomRight;
                Debug.DrawLine(debugStart, debugEnd, Color.green, 0.8f);

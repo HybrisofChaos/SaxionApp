@@ -6,6 +6,7 @@ public class BaseWeapon : MonoBehaviour
 {
 
     private float shootRate = 0.2f;
+    private Animator anim;
 
     public enum ItemTypes: int
     {
@@ -33,6 +34,7 @@ public class BaseWeapon : MonoBehaviour
 
     public void SpecialFire() // On Fire Special
     {
+        anim.SetTrigger("Slash");
         // noop
     }
 
@@ -43,4 +45,10 @@ public class BaseWeapon : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         canShoot = true;
     }
+
+    void Start()
+    {
+        this.anim = this.GetComponent<Animator>();
+    }
+
 }
