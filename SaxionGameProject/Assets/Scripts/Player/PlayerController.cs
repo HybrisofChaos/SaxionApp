@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour, IKillable
 
 	private List<GameObject> damageSources = new List<GameObject>();
 
+	[SerializeField]
+	protected GameObject powerupEffect;
+
 	void Start(){
 		this.health = this.maxHealth;
 	}
@@ -38,5 +41,20 @@ public class PlayerController : MonoBehaviour, IKillable
 	}
 
 	protected void OnSkill(){
+	}
+
+	//To be overridden by child
+	public void ApplyPowerup(float duration)
+	{
+		if (powerupEffect)
+		{
+			GameObject effect = Instantiate(powerupEffect, this.transform);
+			TimedDestroy destroyTimer = effect.GetComponent<TimedDestroy>();
+			if (destroyTimer)
+			{
+				destroyTimer.SetTime(duration);
+				destroyTimer.StartCountdown();
+			}
+		}
 	}
 }
