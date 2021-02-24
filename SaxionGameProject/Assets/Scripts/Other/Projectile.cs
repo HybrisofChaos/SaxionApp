@@ -22,6 +22,9 @@ public class Projectile : MonoBehaviour
 
     public Mode projectileMode;
 
+    private TrailRenderer trail;
+    private SpriteRenderer sprite;
+
     void OnTriggerEnter2D(Collider2D collider)
 	{
         if (collider.gameObject == owner.gameObject) return;
@@ -38,10 +41,17 @@ public class Projectile : MonoBehaviour
         Destroy(this.gameObject);
 	}
 
-    void Start()
+    void Awake()
 	{
         rb2d = this.GetComponent<Rigidbody2D>();
         rb2d.AddForce(transform.right * speed, ForceMode2D.Impulse);
+
+        this.sprite = this.gameObject.GetComponent<SpriteRenderer>();
+        this.trail = this.gameObject.GetComponentInChildren<TrailRenderer>();
+		if (trail)
+        {
+            trail.sortingOrder = 999;
+		}
 	}
 
     void OnDestroy()
@@ -55,6 +65,20 @@ public class Projectile : MonoBehaviour
     public void SetOwner(GameObject owner)
 	{
         this.owner = owner;
+        Color c = owner.GetComponentInParent<Player>().color;
+        SetColor(c);
+	}
+
+    private void SetColor(Color color)
+	{
+        this.sprite.color = color;
+
+        if (trail)
+        {
+            float alpha = trail.startColor.a;
+            color.a = alpha;
+            trail.startColor = color;
+        }
 	}
 
     public GameObject GetOwner()

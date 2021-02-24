@@ -5,50 +5,50 @@ using UnityEngine;
 public class BaseWeapon : MonoBehaviour
 {
 
-    private float shootRate = 0.2f;
-    private Animator anim;
+	private float shootRate = 0.5f;
+	private Animator anim;
 
-    public enum ItemTypes: int
-    {
-        NEUTRAL = 0,
-        FIRE = 1,
-        WATER = 2,
-        ELECTRIC = 3
-    }
+	public enum ItemTypes : int
+	{
+		NEUTRAL = 0,
+		FIRE = 1,
+		WATER = 2,
+		ELECTRIC = 3
+	}
 
-    public GameObject[] projectileTypes = new GameObject[4];
-    
-    public ItemTypes itemType;
+	public GameObject[] projectileTypes = new GameObject[4];
 
-    private bool canShoot = true;
+	public ItemTypes itemType;
 
-    public void Fire(Quaternion rotation) // On Fire Normal
-    {
+	private bool canShoot = true;
+
+	public void Fire(Quaternion rotation) // On Fire Normal
+	{
 		if (canShoot)
 		{
-            Projectile projectile = Instantiate(projectileTypes[(int)itemType], transform.position, rotation).GetComponent<Projectile>();
-            projectile.SetOwner(this.gameObject);
-            StartCoroutine("CoolDown", shootRate);
+			Projectile projectile = Instantiate(projectileTypes[(int)itemType], transform.position + transform.right * 0.5f + new Vector3(0, 1f, 0), rotation).GetComponent<Projectile>();
+			projectile.SetOwner(this.gameObject);
+			StartCoroutine("CoolDown", shootRate);
+			anim.SetTrigger("Slash");
 		}
-    }
+	}
 
-    public void SpecialFire() // On Fire Special
-    {
-        anim.SetTrigger("Slash");
-        // noop
-    }
+	public void SpecialFire() // On Fire Special
+	{
+		// noop
+	}
 
 
-    IEnumerator CoolDown(float waitTime)
-    {
-        canShoot = false;
-        yield return new WaitForSeconds(waitTime);
-        canShoot = true;
-    }
+	IEnumerator CoolDown(float waitTime)
+	{
+		canShoot = false;
+		yield return new WaitForSeconds(waitTime);
+		canShoot = true;
+	}
 
-    void Start()
-    {
-        this.anim = this.GetComponent<Animator>();
-    }
+	void Start()
+	{
+		this.anim = this.GetComponent<Animator>();
+	}
 
 }
