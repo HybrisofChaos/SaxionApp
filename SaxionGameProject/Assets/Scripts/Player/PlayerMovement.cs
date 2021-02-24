@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[@RequireComponent (typeof(Rigidbody2D))]
+[@RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
 
@@ -42,22 +42,27 @@ public class PlayerMovement : MonoBehaviour
     {
         this.grounded = isGrounded();
 
-        if(grounded){
+        if (grounded)
+        {
             coyoteTime = maxCoyoteTime;
             this.anim.SetBool("isJumping", false);
         }
-        else{
+        else
+        {
             coyoteTime -= Time.deltaTime;
             this.anim.SetBool("isJumping", true);
         }
     }
 
-    public void OnMove(InputValue inputValue){
-        horizontalSpeed = inputValue.Get<Vector2>().x *  speed;
+    public void OnMove(InputValue inputValue)
+    {
+        horizontalSpeed = inputValue.Get<Vector2>().x * speed;
     }
 
-    public void OnJump(){
-        if (coyoteTime > 0 && canJump){
+    public void OnJump()
+    {
+        if (coyoteTime > 0 && canJump)
+        {
             rb2d.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
             StartCoroutine(timeJump(maxCoyoteTime));
         }
@@ -65,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(horizontalSpeed != 0)
+        if (horizontalSpeed != 0)
         {
             this.anim.SetBool("isRunning", true);
         }
@@ -77,17 +82,20 @@ public class PlayerMovement : MonoBehaviour
         rb2d.velocity = new Vector2(horizontalSpeed, rb2d.velocity.y);
     }
 
-    bool isGrounded(){
-               Vector2 topLeft = new Vector2(transform.position.x - transform.localScale.x / 4 - direction, transform.position.y);
-               Vector2 bottomRight = new Vector2(transform.position.x + transform.localScale.x / 4 - direction, transform.position.y - transform.localScale.y / 2 - 0.06f- 1.3f);
-               Vector3 debugStart = topLeft;
-               Vector3 debugEnd = bottomRight;
-               Debug.DrawLine(debugStart, debugEnd, Color.green, 0.8f);
+    bool isGrounded()
+    {
+        Vector2 topLeft = new Vector2(transform.position.x - transform.localScale.x / 1.8f, transform.position.y);
+        Vector2 bottomRight = new Vector2(transform.position.x + transform.localScale.x / 1.8f, transform.position.y - transform.localScale.y - 0.1f);
 
-               return Physics2D.OverlapArea(topLeft, bottomRight, groundMask);
+        Vector3 debugStart = topLeft;
+        Vector3 debugEnd = bottomRight;
+        Debug.DrawLine(debugStart, debugEnd, Color.green, Time.deltaTime);
+
+        return Physics2D.OverlapArea(topLeft, bottomRight, groundMask);
     }
 
-    IEnumerator timeJump(float timeToWait){
+    IEnumerator timeJump(float timeToWait)
+    {
         coyoteTime = 0;
         canJump = false;
         yield return new WaitForSeconds(timeToWait);
