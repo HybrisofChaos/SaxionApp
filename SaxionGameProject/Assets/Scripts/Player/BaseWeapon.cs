@@ -26,10 +26,12 @@ public class BaseWeapon : MonoBehaviour
 	{
 		if (canShoot)
 		{
-			Projectile projectile = Instantiate(projectileTypes[(int)itemType], transform.position + transform.right * 0.5f + new Vector3(0, 1f, 0), rotation).GetComponent<Projectile>();
+//			print(transform.Find("aim_arrow_anchor").Find("aim_arrow"));
+//			Projectile projectile = Instantiate(projectileTypes[(int)itemType], transform.position + transform.right * 0.5f + new Vector3(0, 1f, 0), rotation).GetComponent<Projectile>();
+			Projectile projectile = Instantiate(projectileTypes[(int)itemType], transform.Find("aim_arrow_anchor").Find("aim_arrow").position, rotation).GetComponent<Projectile>();
 			projectile.SetOwner(this.gameObject);
 			StartCoroutine("CoolDown", shootRate);
-			anim.SetTrigger("Slash");
+			anim.SetTrigger("Attack");
 		}
 	}
 

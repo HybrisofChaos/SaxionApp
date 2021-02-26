@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knightPrefab: {fileID: 874384216672310540, guid: f20416ebae1e6c14fa79130b80280c30, type: 3}
-  rangerPrefab: {fileID: 3944953802326132716, guid: fbc2ac5152193894697da5e6f07650f0, type: 3}
+  rangerPrefab: {fileID: 8871918428211814576, guid: 422747f008f936942a19829d2e8ee4a1, type: 3}
+  index: 0
   color: {r: 0, g: 0, b: 0, a: 0}
   playerClass: 0
