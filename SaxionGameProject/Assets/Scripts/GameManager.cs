@@ -3,148 +3,176 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
 
-	public string levelName;
-	public static int GAME_START_READY_TIME = 5;
+    public string levelName;
+    public static int GAME_START_READY_TIME = 5;
 
-	private List<Player> players = new List<Player>();
-	private List<Player> readyPlayers = new List<Player>();
+    private List<Player> players = new List<Player>();
+    private List<Player> readyPlayers = new List<Player>();
 
-	private LobbyManager lobbyManager;
+    private LobbyManager lobbyManager;
+    public Animator loadScreen;
+    public Transform loadScreenPlayerObject;
+    public Sprite KnightSprite;
+    public Sprite RangerSprite;
 
-	public bool gameStarted;
-	private bool playersSpawned;
+
+    public bool gameStarted;
+    private bool playersSpawned;
 
 
-	private GameObject spawnPointHolder;
+    private GameObject spawnPointHolder;
 
-	void Awake()
-	{
-		DontDestroyOnLoad(this.gameObject);
-		lobbyManager = GameObject.FindObjectOfType<LobbyManager>();
+    void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+        lobbyManager = GameObject.FindObjectOfType<LobbyManager>();
 
-		Cursor.lockState = CursorLockMode.Locked;
-		Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
-		PlayerController.OnDeath += OnPlayerDeath;
-	}
+        PlayerController.OnDeath += OnPlayerDeath;
+    }
 
-	public void AddPlayer(Player player)
-	{
-		this.players.Add(player);
-		this.lobbyManager.AddPlayer(player);
-	}
+    public void AddPlayer(Player player)
+    {
+        this.players.Add(player);
+        this.lobbyManager.AddPlayer(player);
+    }
 
-	public void AddReadyPlayer(Player player)
-	{
-		this.readyPlayers.Add(player);
+    public void AddReadyPlayer(Player player)
+    {
+        this.readyPlayers.Add(player);
 
-		if (this.readyPlayers.Count == this.players.Count)
-		{
-			StartCoroutine("StartGame");
-		}
+        if (this.readyPlayers.Count == this.players.Count)
+        {
+            StartCoroutine("StartGame");
+        }
 
-		lobbyManager.ReadyChange(player, true);
-	}
+        lobbyManager.ReadyChange(player, true);
+    }
 
-	public void RemoveReadyPlayer(Player player)
-	{
-		if (this.readyPlayers.Count == this.players.Count)
-		{
-			StopCoroutine("StartGame");
-			lobbyManager.StopGameCountdown();
-		}
+    public void RemoveReadyPlayer(Player player)
+    {
+        if (this.readyPlayers.Count == this.players.Count)
+        {
+            StopCoroutine("StartGame");
+            lobbyManager.StopGameCountdown();
+        }
 
-		this.readyPlayers.Remove(player);
+        this.readyPlayers.Remove(player);
 
-		lobbyManager.ReadyChange(player, false);
+        lobbyManager.ReadyChange(player, false);
 
-	}
+    }
 
-	IEnumerator StartGame()
-	{
-		lobbyManager.StartGameCountdown();
-		yield return new WaitForSeconds(GAME_START_READY_TIME);
-		SceneManager.LoadScene(this.levelName);
+    IEnumerator StartGame()
+    {
+        lobbyManager.StartGameCountdown();
+        yield return new WaitForSeconds(GAME_START_READY_TIME);
+        //
+        //	StartCoroutine(LoadScene());
+        foreach (Player p in players)
+        {
+            Transform lobbyObject = GetPlayerUIObject(p);
+            Transform headObject = lobbyObject.GetChild(0);
+            lobbyObject.gameObject.GetComponent<Image>().color = p.color;
 
-		gameStarted = true;
-		playersSpawned = false;
+            print(p.playerClass);
+            Image headImage = headObject.GetComponent<Image>();
+            headImage.sprite = p.playerClass == Player.PlayerClass.KNIGHT ? KnightSprite : RangerSprite;
+            headImage.color = headImage.color + new Color(0, 0, 0, 1);
+        }
+        loadScreen.SetTrigger("endScene");
+        yield return new WaitForSeconds(3f); // Wait until load screen is finished
 
-		StartCoroutine("SpawnPlayers");
-		this.GetComponent<PlayerInputManager>().DisableJoining();
-	}
 
-	private void OnPlayerDeath(GameObject playerDead, GameObject killer)
-	{
-		Player player = playerDead.transform.parent.GetComponent<Player>();
 
-		print(playerDead.name + " was killed by " + killer.name);
+        SceneManager.LoadScene(this.levelName);
+        gameStarted = true;
+        playersSpawned = false;
 
-		Destroy(playerDead.gameObject);
-		StartCoroutine(StartSpawnPlayer(player, 2));
-	}
+        StartCoroutine("SpawnPlayers");
+        this.GetComponent<PlayerInputManager>().DisableJoining();
+    }
 
-	private IEnumerator SpawnPlayers()
-	{
-		if (!playersSpawned)
-		{
-			yield return new WaitForSeconds(0.5f); //Wait until the scene is loaded
+    private void OnPlayerDeath(GameObject playerDead, GameObject killer)
+    {
+        Player player = playerDead.transform.parent.GetComponent<Player>();
 
-			GameObject spawnPointHolder = GameObject.Find("SpawnPoints");
-			int childrenCount = spawnPointHolder.transform.childCount;
-			List<int> skipChildren = new List<int>();
+        print(playerDead.name + " was killed by " + killer.name);
 
-			//Randomly pick a spawn point for the players
-			foreach (Player p in players)
-			{
-				int spawnIndex;
+        Destroy(playerDead.gameObject);
+        StartCoroutine(StartSpawnPlayer(player, 2));
+    }
 
-				do
-				{
-					spawnIndex = Random.Range(0, childrenCount - 1);
-				} while (skipChildren.Contains(spawnIndex));
+    public Transform GetPlayerUIObject(Player player)
+    {
+        return loadScreenPlayerObject ? this.loadScreenPlayerObject.GetChild(this.players.IndexOf(player)) : null;
+    }
 
-				skipChildren.Add(spawnIndex);
-				p.transform.position = spawnPointHolder.transform.GetChild(spawnIndex).position;
-				if (p.transform.childCount == 0)
-				{
-					p.LoadBody();
-				}
-			}
+    private IEnumerator SpawnPlayers()
+    {
+        if (!playersSpawned)
+        {
+            yield return new WaitForSeconds(0.5f); //Wait until the scene is loaded
 
-			playersSpawned = true;
-		}
-	}
+            GameObject spawnPointHolder = GameObject.Find("SpawnPoints");
+            int childrenCount = spawnPointHolder.transform.childCount;
+            List<int> skipChildren = new List<int>();
 
-	private void SpawnPlayer(Player player)
-	{
-		if (!spawnPointHolder)
-		{
-			spawnPointHolder = GameObject.Find("SpawnPoints");
-		}
+            //Randomly pick a spawn point for the players
+            foreach (Player p in players)
+            {
+                int spawnIndex;
 
-		int spawnIndex;
-		int childrenCount = this.spawnPointHolder.transform.childCount;
-		spawnIndex = Random.Range(0, childrenCount - 1);
+                do
+                {
+                    spawnIndex = Random.Range(0, childrenCount - 1);
+                } while (skipChildren.Contains(spawnIndex));
 
-		player.transform.position = spawnPointHolder.transform.GetChild(spawnIndex).position;
-		if (player.transform.childCount == 0)
-		{
-			player.LoadBody();
-		}
-	}
+                skipChildren.Add(spawnIndex);
+                p.transform.position = spawnPointHolder.transform.GetChild(spawnIndex).position;
+                if (p.transform.childCount == 0)
+                {
+                    p.LoadBody();
+                }
+            }
 
-	private IEnumerator StartSpawnPlayer(Player player, float spawnTimer)
-	{
-		yield return new WaitForSeconds(spawnTimer);
-		SpawnPlayer(player);
-	}
+            playersSpawned = true;
+        }
+    }
 
-	void OnDestroy()
-	{
-		PlayerController.OnDeath -= OnPlayerDeath;
-	}
+    private void SpawnPlayer(Player player)
+    {
+        if (!spawnPointHolder)
+        {
+            spawnPointHolder = GameObject.Find("SpawnPoints");
+        }
+
+        int spawnIndex;
+        int childrenCount = this.spawnPointHolder.transform.childCount;
+        spawnIndex = Random.Range(0, childrenCount - 1);
+
+        player.transform.position = spawnPointHolder.transform.GetChild(spawnIndex).position;
+        if (player.transform.childCount == 0)
+        {
+            player.LoadBody();
+        }
+    }
+
+    private IEnumerator StartSpawnPlayer(Player player, float spawnTimer)
+    {
+        yield return new WaitForSeconds(spawnTimer);
+        SpawnPlayer(player);
+    }
+
+    void OnDestroy()
+    {
+        PlayerController.OnDeath -= OnPlayerDeath;
+    }
 }

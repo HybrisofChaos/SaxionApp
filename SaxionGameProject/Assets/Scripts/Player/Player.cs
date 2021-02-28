@@ -30,20 +30,20 @@ public class Player : MonoBehaviour
     public PlayerClass playerClass = PlayerClass.KNIGHT;
 
     private void ChooseColor()
-    {      
+    {
         switch (index)
         {
             case 0: // Player 1, Red
-                this.color = new Color(1F, UnityEngine.Random.Range(0.1F, 0.5F), UnityEngine.Random.Range(0.1F, 0.5F));
+                this.color = new Color(UnityEngine.Random.Range(0.8F, 0.9F), UnityEngine.Random.Range(0.1F, 0.5F), UnityEngine.Random.Range(0.1F, 0.5F)); // R
                 break;
             case 1: // Player 2, Blue
-                this.color = new Color(UnityEngine.Random.Range(0.1F, 0.5F), UnityEngine.Random.Range(0.1F, 0.5F), 1F);
+                this.color = new Color(UnityEngine.Random.Range(0.1F, 0.5F), UnityEngine.Random.Range(0.1F, 0.5F), UnityEngine.Random.Range(0.8F, 0.9F)); // B
                 break;
             case 2: // Player 3, Yellow
-                this.color = new Color(1F, 1F, UnityEngine.Random.Range(0.1F, 0.5F));
+                this.color = new Color(UnityEngine.Random.Range(0.8F, 0.9F), UnityEngine.Random.Range(0.8F, 0.9F), UnityEngine.Random.Range(0.1F, 0.5F)); // R G
                 break;
             case 3: // Player 4, Green
-                this.color = new Color(UnityEngine.Random.Range(0.1F, 0.5F), 1F, UnityEngine.Random.Range(0.1F, 0.5F));
+                this.color = new Color(UnityEngine.Random.Range(0.1F, 0.5F), UnityEngine.Random.Range(0.8F, 0.9F), UnityEngine.Random.Range(0.1F, 0.5F)); // G
                 break;
         }
     }
