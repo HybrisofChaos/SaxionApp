@@ -1,0 +1,286 @@
+fileFormatVersion: 2
+guid: dc0810189f4211c4bb30ee0f0aa96730
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6099699531519939335
+    second: Ranger_Head
+  - first:
+      213: 4205340988511328433
+    second: Ranger_GuardArm
+  - first:
+      213: -2388955471141502410
+    second: Ranger_TopArm
+  - first:
+      213: 3307481425585109909
+    second: Ranger_Body
+  - first:
+      213: -4344619034391779985
+    second: Ranger_BotArm
+  - first:
+      213: -1696046571448472293
+    second: Ranger_TopLeg
+  - first:
+      213: 2269730902581017254
+    second: Ranger_BotLeg
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 200
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ranger_Head
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 512
+        width: 288
+        height: 306
+      alignment: 9
+      pivot: {x: 0.53264785, y: 0.036016528}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 703dcd4086c76a450800000000000000
+      internalID: 6099699531519939335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ranger_GuardArm
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 588
+        width: 223
+        height: 143
+      alignment: 9
+      pivot: {x: 0.30182898, y: 0.8550624}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b89b93295f5c5a30800000000000000
+      internalID: 4205340988511328433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ranger_TopArm
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 334
+        width: 131
+        height: 136
+      alignment: 9
+      pivot: {x: 0.8445218, y: 0.90790623}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 632826ef7a9b8ded0800000000000000
+      internalID: -2388955471141502410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ranger_Body
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 169
+        width: 251
+        height: 338
+      alignment: 9
+      pivot: {x: 0.503746, y: 0.104980424}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59bf33135d886ed20800000000000000
+      internalID: 3307481425585109909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ranger_BotArm
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 212
+        width: 208
+        height: 62
+      alignment: 9
+      pivot: {x: 0.052473325, y: 0.5303308}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f656daac100d4b3c0800000000000000
+      internalID: -4344619034391779985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ranger_TopLeg
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 57
+        width: 84
+        height: 101
+      alignment: 9
+      pivot: {x: 0.24254844, y: 0.9282364}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1d6b4a11ae6678e0800000000000000
+      internalID: -1696046571448472293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ranger_BotLeg
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 23
+        width: 107
+        height: 157
+      alignment: 9
+      pivot: {x: 0.4209127, y: 0.95515674}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6aa7118fa34bf7f10800000000000000
+      internalID: 2269730902581017254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
