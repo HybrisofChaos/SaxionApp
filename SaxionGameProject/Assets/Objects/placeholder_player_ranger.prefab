@@ -331,6 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1000
+  powerupEffect: {fileID: 72666092569130922, guid: 84565ac8f6493d34895124c843747194, type: 3}
   aimArrow: {fileID: 1493235229998981470}
 --- !u!114 &8526497552968616109
 MonoBehaviour:

@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour, IKillable
 
     private int health;
 
+	[SerializeField]
+	protected GameObject powerupEffect;
     public delegate void DeathAction(GameObject deadPlayer, GameObject killer);
     public static event DeathAction OnDeath;
 
@@ -30,6 +32,23 @@ public class PlayerController : MonoBehaviour, IKillable
         playerAim = this.GetComponent<PlayerAim>();
     }
 
+	protected void OnSkill(){
+	}
+
+	//To be overridden by child
+	public void ApplyPowerup(float duration)
+	{
+		if (powerupEffect)
+		{
+			GameObject effect = Instantiate(powerupEffect, this.transform);
+			TimedDestroy destroyTimer = effect.GetComponent<TimedDestroy>();
+			if (destroyTimer)
+			{
+				destroyTimer.SetTime(duration);
+				destroyTimer.StartCountdown();
+			}
+		}
+	}
     void Update()
     {
         //TODO: See if lerping this helps with mouse input
