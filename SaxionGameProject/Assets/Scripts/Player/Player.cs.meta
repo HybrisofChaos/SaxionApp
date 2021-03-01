@@ -3,7 +3,9 @@ guid: e2a5a2fb4777d3541b66fe11399f6c66
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - knightPrefab: {instanceID: 0}
+  - rangerPrefab: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
