@@ -1056,7 +1056,7 @@ Transform:
   m_GameObject: {fileID: 8871918428211814576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 8277524345106223973}
   - {fileID: 2975753743646562274}
@@ -1125,7 +1125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  jumpSpeed: 25
+  jumpSpeed: 30
   groundMask:
     serializedVersion: 2
     m_Bits: 512
@@ -1173,6 +1173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1000
   aimArrow: {fileID: 4571239738924503842}
+  powerupEffect: {fileID: 0}
 --- !u!114 &8959075884003692658
 MonoBehaviour:
   m_ObjectHideFlags: 0
