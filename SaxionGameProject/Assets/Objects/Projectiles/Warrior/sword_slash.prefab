@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc549b76e27286546b3cd9169f3a430d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 500
+  damage: 250
   speed: 20
   onDestroyParticles: {fileID: 0}
   projectileMode: 0
